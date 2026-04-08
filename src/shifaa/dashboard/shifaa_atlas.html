@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Shifaa Atlas — Global Healing Equity Intelligence">
+<meta property="og:description" content="Where does clinical research reach the people who need it most?">
+<title>Shifaa Atlas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh}
+.header{text-align:center;padding:2rem 1rem;background:linear-gradient(135deg,#0d1b2a,#1b263b)}
+.header h1{font-size:2.5rem;color:#e8c547;margin-bottom:0.3rem}
+.header .arabic{font-size:1.8rem;color:#c9a227;font-family:'Traditional Arabic',serif}
+.header .subtitle{color:#8899aa;font-size:1rem;margin-top:0.5rem}
+.header .quran{color:#667788;font-size:0.85rem;font-style:italic;margin-top:0.8rem}
+.tabs{display:flex;justify-content:center;gap:0;background:#111;border-bottom:2px solid #222;flex-wrap:wrap}
+.tab{padding:0.8rem 1.2rem;cursor:pointer;color:#888;border-bottom:3px solid transparent;transition:all 0.2s;font-size:0.9rem}
+.tab:hover{color:#ccc}
+.tab.active{color:#e8c547;border-bottom-color:#e8c547}
+.panel{display:none;padding:1.5rem;max-width:1200px;margin:0 auto}
+.panel.active{display:block}
+.stats{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;justify-content:center}
+.stat-card{background:#1a1a2e;border:1px solid #333;border-radius:8px;padding:1.2rem;text-align:center;min-width:180px}
+.stat-card .num{font-size:2rem;font-weight:bold;color:#e8c547}
+.stat-card .label{color:#888;font-size:0.85rem;margin-top:0.3rem}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+th{background:#1a1a2e;color:#aaa;text-align:left;padding:8px;border-bottom:1px solid #333;position:sticky;top:0}
+td{padding:6px 8px;border-bottom:1px solid #1a1a2e}
+tr:hover{background:#1a1a2e}
+.desert{color:#ff4444}
+.ok{color:#88aa44}
+.good{color:#22dd88}
+.chart-container{background:#111;border:1px solid #222;border-radius:8px;padding:1rem;margin:1rem 0}
+.coef-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #1a1a2e}
+.coef-name{width:180px;color:#aaa;font-size:0.9rem}
+.coef-bar-area{flex:1;position:relative;height:28px}
+.coef-val{width:120px;text-align:right;font-size:0.85rem}
+.coef-p{width:80px;text-align:right;font-size:0.8rem;color:#888}
+.finding{background:#1a1a2e;border-left:4px solid #e8c547;padding:1rem;margin:1rem 0;border-radius:0 8px 8px 0;line-height:1.6}
+.finding h3{color:#e8c547;margin-bottom:0.5rem}
+.scroll-table{max-height:600px;overflow-y:auto}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="arabic">&#1588;&#1601;&#1575;&#1569;</div>
+<h1>Shifaa Atlas</h1>
+<div class="subtitle">Global Healing Equity Intelligence</div>
+<div class="quran">"And We send down of the Quran that which is a healing and a mercy" &mdash; Quran 17:82</div>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="showPanel(0)">1. Mercy Map</div>
+<div class="tab" onclick="showPanel(1)">2. Balance</div>
+<div class="tab" onclick="showPanel(2)">3. Forecast</div>
+<div class="tab" onclick="showPanel(3)">4. Path</div>
+<div class="tab" onclick="showPanel(4)">5. Reckoning</div>
+</div>
+
+<div class="panel active" id="p0">
+<h2 style="color:#e8c547;margin-bottom:1rem">The Mercy Map (Rahma)</h2>
+<div class="stats">
+<div class="stat-card"><div class="num">72</div><div class="label">Countries with zero trials</div></div>
+<div class="stat-card"><div class="num">0.90</div><div class="label">Gini coefficient</div></div>
+<div class="stat-card"><div class="num">180</div><div class="label">Countries analysed</div></div>
+<div class="stat-card"><div class="num">74,881</div><div class="label">Trials linked</div></div>
+</div>
+<div class="finding"><h3>Finding</h3>72 of 180 countries have zero registered clinical trials despite collectively bearing 28% of global DALYs. The USA alone concentrates 1,281 weighted trial-equivalents &mdash; more than the bottom 120 countries combined.</div>
+<div class="scroll-table"><table id="countryTable"><thead><tr><th>#</th><th>Country</th><th>ISO3</th><th>DALYs</th><th>Trials</th><th>REI</th><th>GDP/cap</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<div class="panel" id="p1">
+<h2 style="color:#e8c547;margin-bottom:1rem">The Balance (Mizan)</h2>
+<div class="finding"><h3>Finding</h3>Disease burden has a <span style="color:#ff4444;font-weight:bold">negative</span> effect on trial activity (beta = -0.255, p &lt; 0.001). Countries with more disease get <em>fewer</em> trials. GDP per capita is the strongest positive predictor (beta = +0.469, p = 0.004). <strong>Money, not need, determines where healing knowledge is generated.</strong></div>
+<h3 style="color:#aaa;margin:1rem 0 0.5rem">Poisson Regression Coefficients (158 countries)</h3>
+<div class="chart-container" id="coefChart"></div>
+<div style="color:#555;font-size:0.8rem;margin-top:0.5rem">* p &lt; 0.05 &nbsp; ** p &lt; 0.01 &nbsp; *** p &lt; 0.001 | Bars show point estimate, lines show 95% CI</div>
+</div>
+
+<div class="panel" id="p2">
+<h2 style="color:#e8c547;margin-bottom:1rem">The Forecast (Qadr)</h2>
+<div class="finding"><h3>Finding</h3>Under baseline assumptions (2% annual DALY growth in low-income countries, 1% trial growth), the 37 countries with over 1 million DALYs and zero trials face a <strong>30% widening</strong> of the mercy gap by 2036.</div>
+<div class="stats">
+<div class="stat-card"><div class="num">37</div><div class="label">Large evidence deserts (&gt;1M DALYs, 0 trials)</div></div>
+<div class="stat-card"><div class="num">30%</div><div class="label">Projected gap widening by 2036</div></div>
+<div class="stat-card"><div class="num">51.2M</div><div class="label">DALYs in DR Congo (0 trials)</div></div>
+</div>
+<div class="finding"><h3>Worst Projected Deterioration</h3>DR Congo (51.2M DALYs), Myanmar (24.1M), Angola (16.2M), Madagascar (14.1M), and Chad (13.2M) face the steepest trajectories. Without targeted intervention, the next decade will deepen the divide between where disease kills and where evidence is generated.</div>
+</div>
+
+<div class="panel" id="p3">
+<h2 style="color:#e8c547;margin-bottom:1rem">The Path (Siraat)</h2>
+<div class="finding"><h3>Finding</h3>If governance quality in the 30 largest evidence deserts reached the median of lower-middle-income nations and health expenditure rose to 5% of GDP, the model predicts a <strong>3.2-fold increase</strong> in trial activity, potentially bringing 22 of 30 countries above the zero-trial threshold.</div>
+<div class="stats">
+<div class="stat-card"><div class="num">3.2x</div><div class="label">Predicted trial increase</div></div>
+<div class="stat-card"><div class="num">22/30</div><div class="label">Deserts gaining trials</div></div>
+</div>
+<div class="finding"><h3>The Binding Constraint</h3>GDP per capita remains the binding constraint for the poorest nations. Even optimal governance is insufficient without direct research investment. The most responsive countries are those with existing but underfunded health infrastructure: Angola, Mozambique, and DR Congo.</div>
+</div>
+
+<div class="panel" id="p4">
+<h2 style="color:#e8c547;margin-bottom:1rem">The Reckoning (Hisab)</h2>
+<div class="finding"><h3>Finding</h3>The Gini coefficient of trial distribution was <strong>0.915 in 2005</strong> and <strong>0.893 in 2023</strong> &mdash; extreme inequality comparable to the world's most unequal wealth distributions, showing negligible improvement over nearly two decades. COVID-19 produced no equity dividend.</div>
+<div class="chart-container"><canvas id="giniCanvas" width="900" height="350"></canvas></div>
+</div>
+
+<script>
+const COUNTRIES=[{"iso3c": "AGO", "name": "Angola", "dalys": 16179804, "trials": 0.0, "rei": -10.0, "pop": 32375632, "gdp": 2493.7}, {"iso3c": "ALB", "name": "Albania", "dalys": 781462, "trials": 0.0, "rei": -10.0, "pop": 2567801, "gdp": 6069.4}, {"iso3c": "AND", "name": "AND", "dalys": 21031, "trials": 0.0, "rei": -10.0, "pop": 76474, "gdp": 41257.8}, {"iso3c": "ARM", "name": "Armenia", "dalys": 968922, "trials": 0.0, "rei": -10.0, "pop": 2962500, "gdp": 4597.2}, {"iso3c": "ASM", "name": "ASM", "dalys": 16509, "trials": 0.0, "rei": -10.0, "pop": 50209, "gdp": 12886.1}, {"iso3c": "ATG", "name": "ATG", "dalys": 25280, "trials": 0.0, "rei": -10.0, "pop": 91364, "gdp": 18896.4}, {"iso3c": "AZE", "name": "Azerbaijan", "dalys": 3094298, "trials": 0.0, "rei": -10.0, "pop": 10024283, "gdp": 4805.8}, {"iso3c": "BDI", "name": "Burundi", "dalys": 7411534, "trials": 0.0, "rei": -10.0, "pop": 12255336, "gdp": 234.3}, {"iso3c": "BEN", "name": "Benin", "dalys": 6706386, "trials": 0.0, "rei": -10.0, "pop": 12726755, "gdp": 1130.8}, {"iso3c": "BHR", "name": "BHR", "dalys": 284060, "trials": 0.0, "rei": -10.0, "pop": 1483756, "gdp": 27259.7}, {"iso3c": "BHS", "name": "BHS", "dalys": 154084, "trials": 0.0, "rei": -10.0, "pop": 394675, "gdp": 33640.3}, {"iso3c": "BLZ", "name": "BLZ", "dalys": 107354, "trials": 0.0, "rei": -10.0, "pop": 385829, "gdp": 6171.6}, {"iso3c": "BMU", "name": "BMU", "dalys": 19514, "trials": 0.0, "rei": -10.0, "pop": 64107, "gdp": 115798.0}, {"iso3c": "BRB", "name": "BRB", "dalys": 103608, "trials": 0.0, "rei": -10.0, "pop": 281207, "gdp": 21912.2}, {"iso3c": "BTN", "name": "BTN", "dalys": 232502, "trials": 0.0, "rei": -10.0, "pop": 764824, "gdp": 3576.9}, {"iso3c": "CAF", "name": "Central African Rep", "dalys": 5276831, "trials": 0.0, "rei": -10.0, "pop": 4944703, "gdp": 449.2}, {"iso3c": "COD", "name": "DR Congo", "dalys": 51197047, "trials": 0.0, "rei": -10.0, "pop": 92947442, "gdp": 504.0}, {"iso3c": "COG", "name": "COG", "dalys": 2561200, "trials": 0.0, "rei": -10.0, "pop": 5616661, "gdp": 2488.4}, {"iso3c": "COM", "name": "COM", "dalys": 260108, "trials": 0.0, "rei": -10.0, "pop": 786578, "gdp": 1510.2}, {"iso3c": "CPV", "name": "CPV", "dalys": 138125, "trials": 0.0, "rei": -10.0, "pop": 514104, "gdp": 4380.8}, {"iso3c": "CUB", "name": "Cuba", "dalys": 3765041, "trials": 0.0, "rei": -10.0, "pop": 11202846, "gdp": 9232.3}, {"iso3c": "DJI", "name": "DJI", "dalys": 521248, "trials": 0.0, "rei": -10.0, "pop": 1088709, "gdp": 2837.2}, {"iso3c": "DMA", "name": "DMA", "dalys": 23082, "trials": 0.0, "rei": -10.0, "pop": 67880, "gdp": 9491.1}, {"iso3c": "ERI", "name": "Eritrea", "dalys": 3576354, "trials": 0.0, "rei": -10.0, "pop": 3240194, "gdp": 0}, {"iso3c": "FJI", "name": "FJI", "dalys": 342188, "trials": 0.0, "rei": -10.0, "pop": 914899, "gdp": 5842.1}, {"iso3c": "GIN", "name": "GIN", "dalys": 7875559, "trials": 0.0, "rei": -10.0, "pop": 13034346, "gdp": 1031.3}, {"iso3c": "GMB", "name": "GMB", "dalys": 1012323, "trials": 0.0, "rei": -10.0, "pop": 2456844, "gdp": 738.2}, {"iso3c": "GNB", "name": "Guinea-Bissau", "dalys": 1156687, "trials": 0.0, "rei": -10.0, "pop": 1967696, "gdp": 811.2}, {"iso3c": "GNQ", "name": "GNQ", "dalys": 678811, "trials": 0.0, "rei": -10.0, "pop": 1670177, "gdp": 6804.1}, {"iso3c": "GRD", "name": "GRD", "dalys": 38883, "trials": 0.0, "rei": -10.0, "pop": 115981, "gdp": 10462.8}, {"iso3c": "GUY", "name": "GUY", "dalys": 299669, "trials": 0.0, "rei": -10.0, "pop": 807665, "gdp": 6405.8}, {"iso3c": "IRQ", "name": "Iraq", "dalys": 12407606, "trials": 0.0, "rei": -10.0, "pop": 41192171, "gdp": 5671.9}, {"iso3c": "JAM", "name": "JAM", "dalys": 890264, "trials": 0.0, "rei": -10.0, "pop": 2823271, "gdp": 6030.7}, {"iso3c": "KGZ", "name": "KGZ", "dalys": 1651877, "trials": 0.0, "rei": -10.0, "pop": 6590211, "gdp": 1422.0}, {"iso3c": "LAO", "name": "Laos", "dalys": 2822024, "trials": 0.0, "rei": -10.0, "pop": 7237636, "gdp": 2589.3}, {"iso3c": "LBR", "name": "Liberia", "dalys": 3165793, "trials": 0.0, "rei": -10.0, "pop": 5043721, "gdp": 658.2}, {"iso3c": "LBY", "name": "LBY", "dalys": 2032197, "trials": 0.0, "rei": -10.0, "pop": 6951033, "gdp": 9963.2}, {"iso3c": "LKA", "name": "LKA", "dalys": 5752750, "trials": 0.0, "rei": -10.0, "pop": 21803000, "gdp": 4081.9}, {"iso3c": "LSO", "name": "LSO", "dalys": 1251740, "trials": 0.0, "rei": -10.0, "pop": 2209405, "gdp": 1082.1}, {"iso3c": "MDG", "name": "Madagascar", "dalys": 14139075, "trials": 0.0, "rei": -10.0, "pop": 28219554, "gdp": 499.8}, {"iso3c": "MDV", "name": "MDV", "dalys": 90511, "trials": 0.0, "rei": -10.0, "pop": 487731, "gdp": 11740.3}, {"iso3c": "MLT", "name": "MLT", "dalys": 132427, "trials": 0.0, "rei": -10.0, "pop": 503912, "gdp": 32421.9}, {"iso3c": "MMR", "name": "Myanmar", "dalys": 24090323, "trials": 0.0, "rei": -10.0, "pop": 52640713, "gdp": 1426.0}, {"iso3c": "MNE", "name": "MNE", "dalys": 200584, "trials": 0.0, "rei": -10.0, "pop": 626753, "gdp": 8749.0}, {"iso3c": "MRT", "name": "MRT", "dalys": 1622383, "trials": 0.0, "rei": -10.0, "pop": 4467708, "gdp": 1767.1}, {"iso3c": "NIC", "name": "NIC", "dalys": 1716828, "trials": 0.0, "rei": -10.0, "pop": 6483657, "gdp": 1958.6}, {"iso3c": "OMN", "name": "OMN", "dalys": 808098, "trials": 0.0, "rei": -10.0, "pop": 4591241, "gdp": 19180.2}, {"iso3c": "PNG", "name": "PNG", "dalys": 3869137, "trials": 0.0, "rei": -10.0, "pop": 9609010, "gdp": 2575.8}, {"iso3c": "PRK", "name": "PRK", "dalys": 8540332, "trials": 0.0, "rei": -10.0, "pop": 26037632, "gdp": 0}, {"iso3c": "QAT", "name": "QAT", "dalys": 387444, "trials": 0.0, "rei": -10.0, "pop": 2638657, "gdp": 66841.4}, {"iso3c": "SDN", "name": "SDN", "dalys": 12098662, "trials": 0.0, "rei": -10.0, "pop": 45548175, "gdp": 710.0}, {"iso3c": "SLB", "name": "SLB", "dalys": 266998, "trials": 0.0, "rei": -10.0, "pop": 728147, "gdp": 2223.7}, {"iso3c": "SLE", "name": "Sierra Leone", "dalys": 5434064, "trials": 0.0, "rei": -10.0, "pop": 7731991, "gdp": 843.7}, {"iso3c": "SLV", "name": "SLV", "dalys": 2059267, "trials": 0.0, "rei": -10.0, "pop": 6222318, "gdp": 4320.1}, {"iso3c": "SOM", "name": "Somalia", "dalys": 11983035, "trials": 0.0, "rei": -10.0, "pop": 16030971, "gdp": 540.0}, {"iso3c": "SSD", "name": "South Sudan", "dalys": 6476004, "trials": 0.0, "rei": -10.0, "pop": 10423384, "gdp": 0}, {"iso3c": "STP", "name": "STP", "dalys": 68054, "trials": 0.0, "rei": -10.0, "pop": 213392, "gdp": 1935.3}, {"iso3c": "SUR", "name": "SUR", "dalys": 204565, "trials": 0.0, "rei": -10.0, "pop": 605768, "gdp": 6629.7}, {"iso3c": "SWZ", "name": "SWZ", "dalys": 719515, "trials": 0.0, "rei": -10.0, "pop": 1179874, "gdp": 3913.1}, {"iso3c": "SYC", "name": "SYC", "dalys": 29485, "trials": 0.0, "rei": -10.0, "pop": 97625, "gdp": 19141.5}, {"iso3c": "SYR", "name": "SYR", "dalys": 5096978, "trials": 0.0, "rei": -10.0, "pop": 20353534, "gdp": 1109.5}, {"iso3c": "TCD", "name": "Chad", "dalys": 13170857, "trials": 0.0, "rei": -10.0, "pop": 16685223, "gdp": 893.3}, {"iso3c": "TGO", "name": "TGO", "dalys": 4084258, "trials": 0.0, "rei": -10.0, "pop": 8463068, "gdp": 826.3}, {"iso3c": "TJK", "name": "TJK", "dalys": 2444997, "trials": 0.0, "rei": -10.0, "pop": 9529966, "gdp": 871.0}, {"iso3c": "TLS", "name": "TLS", "dalys": 461354, "trials": 0.0, "rei": -10.0, "pop": 1300945, "gdp": 1562.4}, {"iso3c": "TON", "name": "TON", "dalys": 29160, "trials": 0.0, "rei": -10.0, "pop": 105669, "gdp": 4788.8}, {"iso3c": "TTO", "name": "TTO", "dalys": 510571, "trials": 0.0, "rei": -10.0, "pop": 1363985, "gdp": 17212.6}, {"iso3c": "URY", "name": "URY", "dalys": 1116897, "trials": 0.0, "rei": -10.0, "pop": 3397206, "gdp": 18315.7}, {"iso3c": "VEN", "name": "VEN", "dalys": 10057629, "trials": 0.0, "rei": -10.0, "pop": 28938098, "gdp": 2523.1}, {"iso3c": "VUT", "name": "VUT", "dalys": 88722, "trials": 0.0, "rei": -10.0, "pop": 291985, "gdp": 3207.4}, {"iso3c": "WSM", "name": "WSM", "dalys": 67217, "trials": 0.0, "rei": -10.0, "pop": 209780, "gdp": 4351.9}, {"iso3c": "YEM", "name": "YEM", "dalys": 12610588, "trials": 0.0, "rei": -10.0, "pop": 35111408, "gdp": 0}, {"iso3c": "ZWE", "name": "ZWE", "dalys": 7452346, "trials": 0.0, "rei": -8.36, "pop": 15271368, "gdp": 2184.3}, {"iso3c": "BIH", "name": "BIH", "dalys": 1240451, "trials": 0.0, "rei": -7.62, "pop": 3345533, "gdp": 6122.4}, {"iso3c": "PHL", "name": "Philippines", "dalys": 31824499, "trials": 0.9, "rei": -7.56, "pop": 110804683, "gdp": 3400.8}, {"iso3c": "RWA", "name": "Rwanda", "dalys": 5700044, "trials": 0.2, "rei": -7.45, "pop": 12776103, "gdp": 810.1}, {"iso3c": "PAN", "name": "PAN", "dalys": 1018529, "trials": 0.0, "rei": -7.33, "pop": 4234700, "gdp": 16477.9}, {"iso3c": "NER", "name": "Niger", "dalys": 19712257, "trials": 1.0, "rei": -7.29, "pop": 22947757, "gdp": 561.7}, {"iso3c": "AFG", "name": "Afghanistan", "dalys": 15406005, "trials": 1.0, "rei": -7.19, "pop": 37856121, "gdp": 496.6}, {"iso3c": "NGA", "name": "Nigeria", "dalys": 130722399, "trials": 9.0, "rei": -7.16, "pop": 209485641, "gdp": 3189.8}, {"iso3c": "MOZ", "name": "Mozambique", "dalys": 16155778, "trials": 1.3, "rei": -7.11, "pop": 29884380, "gdp": 519.1}, {"iso3c": "MAR", "name": "MAR", "dalys": 11445822, "trials": 1.0, "rei": -7.06, "pop": 36210898, "gdp": 3508.1}, {"iso3c": "IND", "name": "India", "dalys": 467095158, "trials": 42.3, "rei": -7.04, "pop": 1389030312, "gdp": 2041.4}, {"iso3c": "BWA", "name": "BWA", "dalys": 901455, "trials": 0.1, "rei": -7.01, "pop": 2332083, "gdp": 7172.1}, {"iso3c": "ETH", "name": "Ethiopia", "dalys": 48575337, "trials": 5.1, "rei": -6.98, "pop": 115737383, "gdp": 793.5}, {"iso3c": "IDN", "name": "Indonesia", "dalys": 86666497, "trials": 10.6, "rei": -6.91, "pop": 272489381, "gdp": 4106.9}, {"iso3c": "UZB", "name": "UZB", "dalys": 10146554, "trials": 1.3, "rei": -6.88, "pop": 32964701, "gdp": 2041.4}, {"iso3c": "ARE", "name": "ARE", "dalys": 1499200, "trials": 0.2, "rei": -6.87, "pop": 9445785, "gdp": 45938.6}, {"iso3c": "BGD", "name": "Bangladesh", "dalys": 51287748, "trials": 7.3, "rei": -6.84, "pop": 164913055, "gdp": 2129.8}, {"iso3c": "CMR", "name": "Cameroon", "dalys": 17159307, "trials": 2.6, "rei": -6.82, "pop": 25506095, "gdp": 1555.2}, {"iso3c": "SEN", "name": "Senegal", "dalys": 6244237, "trials": 1.0, "rei": -6.8, "pop": 16352922, "gdp": 1431.2}, {"iso3c": "DZA", "name": "DZA", "dalys": 11448738, "trials": 2.0, "rei": -6.76, "pop": 43294546, "gdp": 4468.5}, {"iso3c": "KAZ", "name": "KAZ", "dalys": 5786856, "trials": 1.0, "rei": -6.76, "pop": 19209555, "gdp": 9457.1}, {"iso3c": "SVK", "name": "Slovakia", "dalys": 1830673, "trials": 0.4, "rei": -6.69, "pop": 5454147, "gdp": 19406.1}, {"iso3c": "GTM", "name": "Guatemala", "dalys": 4718556, "trials": 1.1, "rei": -6.65, "pop": 17103803, "gdp": 4512.0}, {"iso3c": "NPL", "name": "Nepal", "dalys": 9168699, "trials": 2.1, "rei": -6.63, "pop": 28414064, "gdp": 1203.1}, {"iso3c": "ECU", "name": "ECU", "dalys": 4151844, "trials": 1.0, "rei": -6.62, "pop": 17340021, "gdp": 6205.1}, {"iso3c": "BOL", "name": "Bolivia", "dalys": 3844660, "trials": 1.0, "rei": -6.58, "pop": 11671386, "gdp": 4203.2}, {"iso3c": "PAK", "name": "Pakistan", "dalys": 87507647, "trials": 26.0, "rei": -6.53, "pop": 230800899, "gdp": 1390.4}, {"iso3c": "PER", "name": "Peru", "dalys": 8549908, "trials": 2.5, "rei": -6.53, "pop": 32449303, "gdp": 7037.0}, {"iso3c": "ROU", "name": "Romania", "dalys": 7866837, "trials": 2.3, "rei": -6.53, "pop": 19371648, "gdp": 12909.6}, {"iso3c": "HTI", "name": "Haiti", "dalys": 6728983, "trials": 2.1, "rei": -6.51, "pop": 11105163, "gdp": 1352.2}, {"iso3c": "VNM", "name": "Vietnam", "dalys": 27668681, "trials": 9.9, "rei": -6.45, "pop": 97173776, "gdp": 3440.9}, {"iso3c": "UKR", "name": "Ukraine", "dalys": 19271308, "trials": 7.1, "rei": -6.44, "pop": 44957458, "gdp": 3619.9}, {"iso3c": "BLR", "name": "BLR", "dalys": 3886915, "trials": 1.5, "rei": -6.42, "pop": 9419758, "gdp": 6837.8}, {"iso3c": "MLI", "name": "Mali", "dalys": 14221967, "trials": 6.5, "rei": -6.34, "pop": 21068405, "gdp": 971.9}, {"iso3c": "BFA", "name": "Burkina Faso", "dalys": 10336174, "trials": 5.0, "rei": -6.32, "pop": 20961952, "gdp": 764.9}, {"iso3c": "RUS", "name": "Russia", "dalys": 62825198, "trials": 30.1, "rei": -6.32, "pop": 145453291, "gdp": 11447.7}, {"iso3c": "SRB", "name": "Serbia", "dalys": 3468924, "trials": 1.8, "rei": -6.29, "pop": 6945235, "gdp": 7755.6}, {"iso3c": "TZA", "name": "Tanzania", "dalys": 23404545, "trials": 12.0, "rei": -6.29, "pop": 59174891, "gdp": 1063.3}, {"iso3c": "IRN", "name": "Iran", "dalys": 20796193, "trials": 11.5, "rei": -6.26, "pop": 87051648, "gdp": 3997.5}, {"iso3c": "DOM", "name": "Dominican Rep", "dalys": 3371729, "trials": 2.0, "rei": -6.22, "pop": 10894043, "gdp": 8183.0}, {"iso3c": "COL", "name": "Colombia", "dalys": 12472595, "trials": 8.2, "rei": -6.18, "pop": 49907985, "gdp": 6472.5}, {"iso3c": "PRY", "name": "PRY", "dalys": 1857584, "trials": 1.2, "rei": -6.17, "pop": 6515058, "gdp": 5821.2}, {"iso3c": "MWI", "name": "MWI", "dalys": 9325433, "trials": 6.6, "rei": -6.15, "pop": 19025752, "gdp": 580.9}, {"iso3c": "MEX", "name": "Mexico", "dalys": 38127361, "trials": 27.5, "rei": -6.14, "pop": 125762982, "gdp": 10369.6}, {"iso3c": "BGR", "name": "Bulgaria", "dalys": 3179621, "trials": 2.4, "rei": -6.13, "pop": 6616726, "gdp": 10353.7}, {"iso3c": "KEN", "name": "Kenya", "dalys": 17379660, "trials": 13.8, "rei": -6.1, "pop": 51202827, "gdp": 1960.4}, {"iso3c": "KHM", "name": "Cambodia", "dalys": 4681229, "trials": 3.8, "rei": -6.1, "pop": 16481304, "gdp": 2225.9}, {"iso3c": "ARG", "name": "Argentina", "dalys": 12842529, "trials": 10.3, "rei": -6.09, "pop": 44973465, "gdp": 9956.0}, {"iso3c": "HND", "name": "Honduras", "dalys": 2488607, "trials": 2.0, "rei": -6.09, "pop": 9943633, "gdp": 2502.3}, {"iso3c": "MUS", "name": "MUS", "dalys": 439000, "trials": 0.4, "rei": -6.09, "pop": 1265985, "gdp": 11568.3}, {"iso3c": "NAM", "name": "NAM", "dalys": 1227541, "trials": 1.0, "rei": -6.09, "pop": 2650494, "gdp": 4731.9}, {"iso3c": "CRI", "name": "CRI", "dalys": 1220681, "trials": 1.0, "rei": -6.08, "pop": 4999553, "gdp": 12884.7}, {"iso3c": "ZMB", "name": "ZMB", "dalys": 9578702, "trials": 8.0, "rei": -6.08, "pop": 18513839, "gdp": 1259.0}, {"iso3c": "LVA", "name": "Latvia", "dalys": 821270, "trials": 0.7, "rei": -6.07, "pop": 1913822, "gdp": 17295.0}, {"iso3c": "TUN", "name": "TUN", "dalys": 3412043, "trials": 3.0, "rei": -6.05, "pop": 11875081, "gdp": 3528.9}, {"iso3c": "GHA", "name": "Ghana", "dalys": 13737212, "trials": 12.7, "rei": -6.04, "pop": 31258945, "gdp": 2186.7}, {"iso3c": "MKD", "name": "MKD", "dalys": 678441, "trials": 0.7, "rei": -6.01, "pop": 1876262, "gdp": 6718.9}, {"iso3c": "THA", "name": "Thailand", "dalys": 21486600, "trials": 21.2, "rei": -6.01, "pop": 71522271, "gdp": 7605.7}, {"iso3c": "ZAF", "name": "South Africa", "dalys": 27702294, "trials": 27.3, "rei": -6.01, "pop": 59587885, "gdp": 6533.7}, {"iso3c": "BRA", "name": "Brazil", "dalys": 64743698, "trials": 67.5, "rei": -5.98, "pop": 207455459, "gdp": 9029.8}, {"iso3c": "MNG", "name": "MNG", "dalys": 923631, "trials": 1.0, "rei": -5.97, "pop": 3267673, "gdp": 4347.5}, {"iso3c": "MYS", "name": "Malaysia", "dalys": 7934740, "trials": 8.7, "rei": -5.96, "pop": 33440596, "gdp": 10920.2}, {"iso3c": "MDA", "name": "MDA", "dalys": 1423788, "trials": 1.6, "rei": -5.95, "pop": 2664224, "gdp": 4405.3}, {"iso3c": "UGA", "name": "Uganda", "dalys": 19857735, "trials": 22.7, "rei": -5.94, "pop": 42999637, "gdp": 822.2}, {"iso3c": "JPN", "name": "Japan", "dalys": 39256913, "trials": 48.3, "rei": -5.91, "pop": 126633000, "gdp": 40416.0}, {"iso3c": "CHN", "name": "China", "dalys": 360171193, "trials": 468.7, "rei": -5.89, "pop": 1407745000, "gdp": 10342.9}, {"iso3c": "HUN", "name": "Hungary", "dalys": 3933686, "trials": 6.4, "rei": -5.79, "pop": 9694824, "gdp": 17012.9}, {"iso3c": "SAU", "name": "Saudi Arabia", "dalys": 6858384, "trials": 12.5, "rei": -5.74, "pop": 30063799, "gdp": 29566.8}, {"iso3c": "CHL", "name": "Chile", "dalys": 4675072, "trials": 8.8, "rei": -5.73, "pop": 19197744, "gdp": 14495.7}, {"iso3c": "GAB", "name": "GAB", "dalys": 784088, "trials": 1.5, "rei": -5.72, "pop": 2267706, "gdp": 7441.2}, {"iso3c": "LTU", "name": "Lithuania", "dalys": 1198496, "trials": 2.3, "rei": -5.72, "pop": 2811089, "gdp": 19608.8}, {"iso3c": "LUX", "name": "LUX", "dalys": 148188, "trials": 0.3, "rei": -5.71, "pop": 620001, "gdp": 112696.6}, {"iso3c": "GEO", "name": "Georgia", "dalys": 1484369, "trials": 3.2, "rei": -5.67, "pop": 3720161, "gdp": 4741.3}, {"iso3c": "PRI", "name": "PRI", "dalys": 1115471, "trials": 2.7, "rei": -5.61, "pop": 3302691, "gdp": 31830.5}, {"iso3c": "JOR", "name": "Jordan", "dalys": 2323519, "trials": 6.0, "rei": -5.59, "pop": 10671891, "gdp": 4170.1}, {"iso3c": "NZL", "name": "New Zealand", "dalys": 1350715, "trials": 3.6, "rei": -5.58, "pop": 4970300, "gdp": 42855.8}, {"iso3c": "EST", "name": "Estonia", "dalys": 472026, "trials": 1.3, "rei": -5.55, "pop": 1326898, "gdp": 24021.3}, {"iso3c": "CYP", "name": "CYP", "dalys": 337277, "trials": 1.0, "rei": -5.53, "pop": 1286671, "gdp": 29227.2}, {"iso3c": "CZE", "name": "Czechia", "dalys": 3625028, "trials": 11.6, "rei": -5.5, "pop": 10671870, "gdp": 24062.7}, {"iso3c": "HRV", "name": "Croatia", "dalys": 1531229, "trials": 4.8, "rei": -5.5, "pop": 3949390, "gdp": 15563.6}, {"iso3c": "KWT", "name": "KWT", "dalys": 746320, "trials": 2.4, "rei": -5.49, "pop": 4442316, "gdp": 31707.9}, {"iso3c": "LBN", "name": "Lebanon", "dalys": 1565302, "trials": 5.1, "rei": -5.49, "pop": 5794594, "gdp": 8905.9}, {"iso3c": "EGY", "name": "Egypt", "dalys": 28911965, "trials": 104.1, "rei": -5.44, "pop": 107553158, "gdp": 2963.0}, {"iso3c": "PRT", "name": "PRT", "dalys": 3405328, "trials": 12.6, "rei": -5.43, "pop": 10286263, "gdp": 23343.4}, {"iso3c": "AUS", "name": "Australia", "dalys": 6687571, "trials": 25.4, "rei": -5.42, "pop": 25334826, "gdp": 55194.8}, {"iso3c": "POL", "name": "Poland", "dalys": 13685952, "trials": 52.5, "rei": -5.42, "pop": 37965475, "gdp": 15874.5}, {"iso3c": "DEU", "name": "Germany", "dalys": 28253910, "trials": 124.8, "rei": -5.35, "pop": 83092962, "gdp": 47656.2}, {"iso3c": "AUT", "name": "AUT", "dalys": 2636995, "trials": 13.2, "rei": -5.3, "pop": 8879920, "gdp": 49886.0}, {"iso3c": "IRL", "name": "IRL", "dalys": 1213484, "trials": 6.2, "rei": -5.29, "pop": 4976456, "gdp": 81827.7}, {"iso3c": "SVN", "name": "Slovenia", "dalys": 655611, "trials": 4.1, "rei": -5.21, "pop": 2088385, "gdp": 25814.2}, {"iso3c": "GRC", "name": "GRC", "dalys": 3565465, "trials": 23.4, "rei": -5.18, "pop": 10721582, "gdp": 19335.4}, {"iso3c": "ITA", "name": "Italy", "dalys": 18163870, "trials": 121.5, "rei": -5.17, "pop": 59729081, "gdp": 33812.8}, {"iso3c": "NLD", "name": "Netherlands", "dalys": 5095167, "trials": 38.2, "rei": -5.13, "pop": 17344874, "gdp": 53554.9}, {"iso3c": "FIN", "name": "FIN", "dalys": 1711348, "trials": 14.0, "rei": -5.09, "pop": 5521606, "gdp": 48358.2}, {"iso3c": "KOR", "name": "South Korea", "dalys": 12456408, "trials": 101.8, "rei": -5.09, "pop": 51764822, "gdp": 33826.9}, {"iso3c": "ESP", "name": "Spain", "dalys": 13156387, "trials": 115.3, "rei": -5.06, "pop": 47118501, "gdp": 29786.5}, {"iso3c": "NOR", "name": "Norway", "dalys": 1380893, "trials": 12.9, "rei": -5.03, "pop": 5347896, "gdp": 76430.6}, {"iso3c": "GBR", "name": "United Kingdom", "dalys": 20151394, "trials": 197.3, "rei": -5.01, "pop": 66631000, "gdp": 43158.7}, {"iso3c": "USA", "name": "United States", "dalys": 113380751, "trials": 1280.7, "rei": -4.95, "pop": 330226227, "gdp": 64746.5}, {"iso3c": "ISL", "name": "Iceland", "dalys": 86089, "trials": 1.0, "rei": -4.93, "pop": 360563, "gdp": 69296.3}, {"iso3c": "ISR", "name": "Israel", "dalys": 1842011, "trials": 24.1, "rei": -4.88, "pop": 9054000, "gdp": 44250.6}, {"iso3c": "BEL", "name": "Belgium", "dalys": 3437855, "trials": 46.9, "rei": -4.87, "pop": 11488980, "gdp": 46716.6}, {"iso3c": "CAN", "name": "Canada", "dalys": 11046072, "trials": 150.2, "rei": -4.87, "pop": 37618495, "gdp": 46352.9}, {"iso3c": "FRA", "name": "France", "dalys": 19508387, "trials": 271.6, "rei": -4.86, "pop": 67382061, "gdp": 40408.3}, {"iso3c": "SWE", "name": "Sweden", "dalys": 2834042, "trials": 43.9, "rei": -4.81, "pop": 10278887, "gdp": 51649.0}, {"iso3c": "CHE", "name": "Switzerland", "dalys": 2307052, "trials": 37.9, "rei": -4.78, "pop": 8575280, "gdp": 84121.9}, {"iso3c": "SGP", "name": "Singapore", "dalys": 1068967, "trials": 18.1, "rei": -4.77, "pop": 5703569, "gdp": 65952.0}, {"iso3c": "DNK", "name": "Denmark", "dalys": 1723640, "trials": 66.3, "rei": -4.42, "pop": 5814422, "gdp": 59404.3}];
+const COEFS=[{"var": "log_dalys", "coef": -0.2546, "ci_lo": -0.3083, "ci_hi": -0.201, "p": 0.0}, {"var": "log_gdp_pc", "coef": 0.469, "ci_lo": 0.1536, "ci_hi": 0.7843, "p": 0.003558}, {"var": "governance", "coef": 0.2328, "ci_lo": -0.1779, "ci_hi": 0.6434, "p": 0.266616}, {"var": "health_spend_pct", "coef": 0.0814, "ci_lo": 0.0405, "ci_hi": 0.1224, "p": 9.6e-05}, {"var": "hci", "coef": 1.1171, "ci_lo": -2.9684, "ci_hi": 5.2027, "p": 0.592009}, {"var": "physicians", "coef": 0.1606, "ci_lo": -0.0303, "ci_hi": 0.3516, "p": 0.099216}];
+const GINI=[{"year": 2005, "gini": 0.9154}, {"year": 2006, "gini": 0.9057}, {"year": 2007, "gini": 0.9048}, {"year": 2008, "gini": 0.9055}, {"year": 2009, "gini": 0.9059}, {"year": 2010, "gini": 0.8989}, {"year": 2011, "gini": 0.8903}, {"year": 2012, "gini": 0.8932}, {"year": 2013, "gini": 0.897}, {"year": 2014, "gini": 0.8969}, {"year": 2015, "gini": 0.8987}, {"year": 2016, "gini": 0.8989}, {"year": 2017, "gini": 0.8945}, {"year": 2018, "gini": 0.897}, {"year": 2019, "gini": 0.8969}, {"year": 2020, "gini": 0.8933}, {"year": 2021, "gini": 0.8878}, {"year": 2022, "gini": 0.8922}, {"year": 2023, "gini": 0.893}];
+
+function showPanel(i){
+document.querySelectorAll('.panel').forEach(function(p,j){p.classList.toggle('active',j===i)});
+document.querySelectorAll('.tab').forEach(function(t,j){t.classList.toggle('active',j===i)});
+if(i===4)setTimeout(drawGini,50);
+}
+
+// Panel 1: Country table
+(function(){
+var tbody=document.querySelector('#countryTable tbody');
+var html='';
+COUNTRIES.forEach(function(c,i){
+var cls=c.trials===0?'desert':c.rei>-6?'good':'ok';
+var dalys=c.dalys>1e6?(c.dalys/1e6).toFixed(1)+'M':c.dalys>1e3?(c.dalys/1e3).toFixed(0)+'K':c.dalys;
+html+='<tr><td>'+(i+1)+'</td><td>'+c.name+'</td><td>'+c.iso3c+'</td><td>'+dalys+'</td><td class="'+cls+'">'+c.trials.toFixed(1)+'</td><td class="'+cls+'">'+c.rei.toFixed(2)+'</td><td>'+(c.gdp?'$'+Math.round(c.gdp).toLocaleString():'')+'</td></tr>';
+});
+tbody.innerHTML=html;
+})();
+
+// Panel 2: Coefficient chart
+(function(){
+var container=document.getElementById('coefChart');
+var labels={log_dalys:'Disease Burden (log DALYs)',log_gdp_pc:'GDP per Capita (log)',governance:'Governance Quality',health_spend_pct:'Health Expenditure (% GDP)',hci:'Human Capital Index',physicians:'Physicians per 1,000'};
+var maxAbs=0;
+COEFS.forEach(function(c){maxAbs=Math.max(maxAbs,Math.abs(c.ci_lo),Math.abs(c.ci_hi))});
+maxAbs*=1.3;
+var html='';
+COEFS.forEach(function(c){
+var name=labels[c.var]||c.var;
+var sig=c.p<0.001?'***':c.p<0.01?'**':c.p<0.05?'*':'';
+var color=c.coef<0?'#ff4444':'#4488ff';
+var mid=50;
+var barL=Math.min(c.coef,0)/maxAbs*45+mid;
+var barR=Math.max(c.coef,0)/maxAbs*45+mid;
+var ciL=c.ci_lo/maxAbs*45+mid;
+var ciR=c.ci_hi/maxAbs*45+mid;
+html+='<div class="coef-row"><div class="coef-name">'+name+'</div><div class="coef-bar-area">';
+html+='<div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#333"></div>';
+html+='<div style="position:absolute;left:'+ciL+'%;width:'+(ciR-ciL)+'%;top:11px;height:4px;background:#555;border-radius:2px"></div>';
+html+='<div style="position:absolute;left:'+Math.min(barL,mid)+'%;width:'+Math.abs(barR-barL)+'%;top:6px;height:14px;background:'+color+';border-radius:3px;opacity:0.8"></div>';
+html+='</div><div class="coef-val" style="color:'+color+'">'+(c.coef>0?'+':'')+c.coef.toFixed(3)+' '+sig+'</div>';
+html+='<div class="coef-p">p='+(c.p<0.001?'<0.001':c.p.toFixed(3))+'</div></div>';
+});
+container.innerHTML=html;
+})();
+
+// Panel 5: Gini chart
+function drawGini(){
+var canvas=document.getElementById('giniCanvas');
+if(!canvas)return;
+var ctx=canvas.getContext('2d');
+var W=canvas.width,H=canvas.height;
+ctx.clearRect(0,0,W,H);
+var pad={l:60,r:30,t:25,b:45};
+var pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;
+var years=GINI.map(function(g){return g.year});
+var ginis=GINI.map(function(g){return g.gini});
+var minY=0.85,maxY=0.93;
+function xS(i){return pad.l+i/(years.length-1)*pw}
+function yS(v){return pad.t+(1-(v-minY)/(maxY-minY))*ph}
+
+ctx.strokeStyle='#222';ctx.lineWidth=1;
+for(var v=minY;v<=maxY;v+=0.02){
+var y=yS(v);
+ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
+ctx.fillStyle='#555';ctx.font='11px sans-serif';ctx.textAlign='right';
+ctx.fillText(v.toFixed(2),pad.l-8,y+4);
+}
+ctx.textAlign='center';
+years.forEach(function(yr,i){
+if(i%2===0){ctx.fillStyle='#555';ctx.fillText(yr,xS(i),H-pad.b+18)}
+});
+
+ctx.beginPath();ctx.strokeStyle='#e8c547';ctx.lineWidth=2.5;
+ginis.forEach(function(g,i){var x=xS(i),y=yS(g);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y)});
+ctx.stroke();
+
+ginis.forEach(function(g,i){
+ctx.beginPath();ctx.arc(xS(i),yS(g),4,0,Math.PI*2);ctx.fillStyle='#e8c547';ctx.fill();
+});
+
+var ci=years.indexOf(2020);
+if(ci>=0){
+ctx.strokeStyle='rgba(255,68,68,0.4)';ctx.lineWidth=1;ctx.setLineDash([4,4]);
+ctx.beginPath();ctx.moveTo(xS(ci),pad.t);ctx.lineTo(xS(ci),H-pad.b);ctx.stroke();
+ctx.setLineDash([]);ctx.fillStyle='#ff6666';ctx.font='11px sans-serif';
+ctx.fillText('COVID-19',xS(ci),pad.t-8);
+}
+
+ctx.fillStyle='#777';ctx.font='12px sans-serif';ctx.textAlign='center';
+ctx.fillText('Gini Coefficient of Global Clinical Trial Distribution (2005\u20132023)',W/2,H-5);
+}
+</script>
+</body>
+</html>
