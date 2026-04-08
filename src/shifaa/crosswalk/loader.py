@@ -10,19 +10,26 @@ def load_crosswalk(path: Path | None = None) -> pd.DataFrame:
     return pd.read_csv(path, dtype={"gbd_cause_id": int})
 
 def match_condition(condition_text: str, crosswalk: pd.DataFrame) -> dict | None:
+    """Match via MeSH terms. Short terms (<=3 chars) require exact word match
+    to avoid false positives like 'HIV' matching 'CHIV'."""
     cond_lower = condition_text.lower()
+    cond_words = set(cond_lower.replace(",", " ").replace(";", " ").replace("-", " ").split())
     for _, row in crosswalk.iterrows():
         mesh_terms = str(row["mesh_terms"]).split(";")
         for term in mesh_terms:
             term_lower = term.strip().lower()
             if not term_lower:
                 continue
-            if term_lower in cond_lower or cond_lower in term_lower:
-                return {
-                    "gbd_cause_id": int(row["gbd_cause_id"]),
-                    "gbd_cause_name": row["gbd_cause_name"],
-                    "matched_term": term.strip(),
-                }
+            if len(term_lower) <= 3:
+                if term_lower in cond_words:
+                    return {"gbd_cause_id": int(row["gbd_cause_id"]),
+                            "gbd_cause_name": row["gbd_cause_name"],
+                            "matched_term": term.strip()}
+            else:
+                if term_lower in cond_lower or cond_lower in term_lower:
+                    return {"gbd_cause_id": int(row["gbd_cause_id"]),
+                            "gbd_cause_name": row["gbd_cause_name"],
+                            "matched_term": term.strip()}
     return None
 
 def match_conditions_batch(conditions: list[str], crosswalk: pd.DataFrame) -> list[dict | None]:

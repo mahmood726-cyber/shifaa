@@ -16,9 +16,11 @@ def compute_gini(values):
 def compute_lorenz(values):
     values = np.asarray(values, dtype=float)
     values = values[~np.isnan(values)]
+    if len(values) == 0:
+        return np.array([0.0, 1.0]), np.array([0.0, 1.0])
     sorted_vals = np.sort(values)
     cumulative = np.cumsum(sorted_vals)
-    total = cumulative[-1] if len(cumulative) > 0 else 1
+    total = cumulative[-1] if cumulative[-1] > 0 else 1.0
     pop_frac = np.concatenate([[0], np.arange(1, len(sorted_vals) + 1) / len(sorted_vals)])
     income_frac = np.concatenate([[0], cumulative / total])
     return pop_frac, income_frac

@@ -37,7 +37,11 @@ def search_studies_by_condition(
     session: requests.Session | None = None,
     max_pages: int = 50,
 ) -> list[dict]:
-    """Search CT.gov for studies matching a condition, paginating through results."""
+    """Search CT.gov for studies matching a condition, paginating through results.
+
+    Caller owns session lifecycle — pass a session from build_session() and
+    close it when done. If no session is passed, one is created (and not closed).
+    """
     if session is None:
         session = build_session()
     params: dict = {

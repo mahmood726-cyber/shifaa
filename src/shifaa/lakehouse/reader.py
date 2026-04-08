@@ -29,7 +29,7 @@ def read_wb_indicators(silver_dir: Path | None = None) -> pd.DataFrame | None:
             )
             frames.append(df)
     if not frames:
-        return None
+        return pd.DataFrame(columns=["iso3c", "year", "indicator_code", "value"])
     combined = pd.concat(frames, ignore_index=True)
     return combined.dropna(subset=["iso3c", "year", "value"])
 
@@ -69,7 +69,7 @@ def read_ihme_dalys(
         reference_dir = IHME_REFERENCE
     dalys_path = silver_dir / "gbd_results" / "native" / "dalys.parquet"
     if not dalys_path.exists():
-        return None
+        return pd.DataFrame(columns=["iso3c", "year", "cause_id", "cause_name", "dalys"])
     df = pd.read_parquet(dalys_path)
     # Filter: both sexes (3), all ages (22), number metric (1)
     df = df[
