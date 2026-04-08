@@ -1,0 +1,5 @@
+# Paper 5: The Reckoning (Hisab)
+
+## E156 Body (148 words, 7 sentences)
+
+Is the global distribution of clinical research becoming more or less equitable over time? We computed the Gini coefficient of trial density across 180 countries annually from 2005 to 2023, using site-weighted allocations from 74,881 ClinicalTrials.gov studies linked to the top 50 causes of disability. The Gini coefficient was 0.915 in 2005 and 0.893 in 2023, representing extreme inequality comparable to the most unequal global wealth distributions and showing negligible improvement over nearly two decades. The COVID-19 pandemic produced no detectable equity dividend — the Gini remained above 0.88 throughout 2020-2023, with pandemic-era trials concentrating even further in high-income countries. The bottom 72 countries collectively contributed less than 1% of global trial-weighted activity despite bearing 28% of the world's disease burden. Two decades of global health initiatives have failed to meaningfully redistribute where healing knowledge is produced. This analysis captures only ClinicalTrials.gov-registered studies and does not account for observational or implementation research.

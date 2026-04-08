@@ -1,0 +1,5 @@
+# Paper 3: The Forecast (Qadr)
+
+## E156 Body (149 words, 7 sentences)
+
+Will the global research equity gap narrow or widen over the next decade? We projected the Research Equity Index from 2019 to 2036 for 180 countries using IHME burden growth trajectories and observed trial activity trends from ClinicalTrials.gov, assuming current patterns of research investment persist. Under baseline assumptions of 2% annual DALY growth in low-income countries and 1% trial growth, the 37 countries with over one million DALYs and zero trials in 2019 face a projected 30% widening of the mercy gap by 2036. Sub-Saharan Africa bears the steepest trajectory, with projected burden growth outpacing any plausible increase in research activity across all modelled scenarios. The ten countries facing the worst projected deterioration include the Democratic Republic of Congo, Chad, Madagascar, Mozambique, and Niger. Without targeted intervention to redirect research investment, the next decade will deepen the divide between where disease kills and where evidence is generated. Projections assume stable geopolitical conditions and linear extrapolation of current trends.
