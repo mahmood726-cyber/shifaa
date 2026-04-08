@@ -1,0 +1,51 @@
+gbd_cause_id,gbd_cause_name,gbd_level,mesh_terms,icd10_codes
+294,Ischemic heart disease,3,Coronary Artery Disease;Myocardial Infarction;Angina;Acute Coronary Syndrome;Coronary Heart Disease,I20-I25
+295,Cerebrovascular disease,3,Stroke;Cerebrovascular Accident;Brain Ischemia;Cerebral Hemorrhage;Intracranial Hemorrhage,I60-I69
+297,Hypertensive heart disease,3,Hypertension;Essential Hypertension;Hypertensive Heart Disease,I11-I13
+298,Cardiomyopathy and myocarditis,3,Cardiomyopathy;Myocarditis;Dilated Cardiomyopathy;Heart Failure,I42-I43
+302,Atrial fibrillation and flutter,3,Atrial Fibrillation;Atrial Flutter,I48
+322,COPD,3,Chronic Obstructive Pulmonary Disease;COPD;Emphysema;Chronic Bronchitis,J40-J44
+328,Lower respiratory infections,3,Pneumonia;Lower Respiratory Tract Infection;Bronchopneumonia,J12-J18;J20-J22
+339,Tuberculosis,3,Tuberculosis;TB;Mycobacterium tuberculosis;Pulmonary Tuberculosis,A15-A19
+341,HIV/AIDS,3,HIV;AIDS;Human Immunodeficiency Virus;HIV Infection,B20-B24
+345,Malaria,3,Malaria;Plasmodium falciparum;Plasmodium vivax,B50-B54
+366,Diarrheal diseases,3,Diarrhea;Gastroenteritis;Cholera;Rotavirus,A00-A09
+380,Neonatal disorders,3,Neonatal;Preterm Birth;Birth Asphyxia;Neonatal Sepsis,P00-P96
+387,Maternal disorders,3,Maternal Mortality;Preeclampsia;Eclampsia;Obstetric Hemorrhage;Maternal Sepsis,O00-O99
+410,Nutritional deficiencies,3,Malnutrition;Protein-Energy Malnutrition;Kwashiorkor;Marasmus,E40-E46
+426,Diabetes mellitus type 2,3,Diabetes Mellitus Type 2;Type 2 Diabetes;T2DM;Non-Insulin Dependent Diabetes,E11
+427,Diabetes mellitus type 1,3,Diabetes Mellitus Type 1;Type 1 Diabetes;T1DM;Insulin Dependent Diabetes,E10
+429,Chronic kidney disease,3,Chronic Kidney Disease;CKD;Renal Failure;Dialysis;End Stage Renal Disease,N18
+432,Breast cancer,3,Breast Cancer;Breast Neoplasm;Breast Carcinoma,C50
+433,Lung cancer,3,Lung Cancer;Lung Neoplasm;Non-Small Cell Lung Cancer;Small Cell Lung Cancer,C33-C34
+435,Colorectal cancer,3,Colorectal Cancer;Colon Cancer;Rectal Cancer;Colorectal Neoplasm,C18-C21
+436,Stomach cancer,3,Stomach Cancer;Gastric Cancer;Gastric Neoplasm,C16
+437,Liver cancer,3,Liver Cancer;Hepatocellular Carcinoma;Liver Neoplasm,C22
+441,Cervical cancer,3,Cervical Cancer;Cervix Uteri Neoplasm;HPV-Related Cancer,C53
+444,Prostate cancer,3,Prostate Cancer;Prostatic Neoplasm,C61
+446,Pancreatic cancer,3,Pancreatic Cancer;Pancreas Neoplasm,C25
+449,Leukemia,3,Leukemia;Acute Lymphoblastic Leukemia;Acute Myeloid Leukemia;Chronic Lymphocytic Leukemia,C91-C95
+453,Non-Hodgkin lymphoma,3,Non-Hodgkin Lymphoma;B-Cell Lymphoma;Diffuse Large B-Cell Lymphoma,C82-C86
+487,Depressive disorders,3,Depression;Major Depressive Disorder;Depressive Disorder,F32-F33
+488,Anxiety disorders,3,Anxiety;Generalized Anxiety Disorder;Panic Disorder;Social Anxiety,F40-F41
+493,Schizophrenia,3,Schizophrenia;Psychotic Disorder;Schizoaffective Disorder,F20
+494,Bipolar disorder,3,Bipolar Disorder;Manic-Depressive;Bipolar Affective Disorder,F31
+502,Epilepsy,3,Epilepsy;Seizure Disorder;Status Epilepticus,G40-G41
+508,Alzheimer disease,3,Alzheimer;Alzheimer Disease;Dementia;Cognitive Impairment,G30;F00
+510,Parkinson disease,3,Parkinson;Parkinson Disease;Parkinsonian Disorders,G20
+543,Cirrhosis and chronic liver disease,3,Cirrhosis;Liver Cirrhosis;Chronic Liver Disease;Hepatic Fibrosis,K70-K76
+558,Rheumatoid arthritis,3,Rheumatoid Arthritis,M05-M06
+562,Low back pain,3,Low Back Pain;Lumbago;Lumbar Pain,M54
+566,Osteoarthritis,3,Osteoarthritis;Degenerative Joint Disease,M15-M19
+587,Asthma,3,Asthma;Bronchial Asthma,J45-J46
+600,Road injuries,3,Road Traffic Injury;Traffic Accident;Motor Vehicle Accident,V01-V99
+619,Self-harm,3,Suicide;Self-Harm;Suicidal Behavior;Self-Inflicted Injury,X71-X83
+640,Congenital anomalies,3,Congenital Anomaly;Birth Defect;Congenital Heart Disease;Neural Tube Defect,Q00-Q99
+669,Dengue,3,Dengue;Dengue Fever;Dengue Hemorrhagic Fever,A90-A91
+670,Yellow fever,3,Yellow Fever,A95
+672,Hepatitis B,3,Hepatitis B;HBV;Chronic Hepatitis B,B16-B18
+673,Hepatitis C,3,Hepatitis C;HCV;Chronic Hepatitis C,B17.1;B18.2
+687,Meningitis,3,Meningitis;Bacterial Meningitis;Meningococcal,G00-G03
+698,Leishmaniasis,3,Leishmaniasis;Visceral Leishmaniasis;Kala-azar,B55
+724,Skin diseases,3,Dermatitis;Eczema;Psoriasis;Skin Disease,L00-L99
+728,Oral disorders,3,Dental Caries;Periodontal Disease;Oral Cancer,K00-K14

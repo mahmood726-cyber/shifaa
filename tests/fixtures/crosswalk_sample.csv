@@ -1,0 +1,4 @@
+gbd_cause_id,gbd_cause_name,gbd_level,mesh_terms,icd10_codes
+294,Ischemic heart disease,3,Coronary Artery Disease;Myocardial Infarction;Angina,I20-I25
+341,HIV/AIDS,3,HIV;AIDS;Human Immunodeficiency Virus,B20-B24
+426,Diabetes mellitus type 2,3,Diabetes Mellitus Type 2;Type 2 Diabetes;T2DM,E11
