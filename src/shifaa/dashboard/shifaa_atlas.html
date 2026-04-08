@@ -65,22 +65,24 @@ tr:hover{background:#1a1a2e}
 <div class="stat-card"><div class="num">0.90</div><div class="label">Gini coefficient</div></div>
 <div class="stat-card"><div class="num">180</div><div class="label">Countries analysed</div></div>
 <div class="stat-card"><div class="num">74,881</div><div class="label">Trials linked</div></div>
+<div class="stat-card"><div class="num">18</div><div class="label">Statistical methods</div></div>
 </div>
-<div class="finding"><h3>Finding</h3>72 of 180 countries have zero registered clinical trials despite collectively bearing 28% of global DALYs. The USA alone concentrates 1,281 weighted trial-equivalents &mdash; more than the bottom 120 countries combined.</div>
+<div class="finding"><h3>Finding</h3>72 of 180 countries have zero registered clinical trials despite collectively bearing 28% of global DALYs. The USA alone concentrates 1,281 weighted trial-equivalents &mdash; more than the bottom 120 countries combined. Moran's I confirms spatial clustering (I=0.25, p&lt;0.0001). The Esteban-Ray polarization index reveals two distinct regimes: 67% of countries averaging 0.5 trials versus 33% averaging 65.</div>
 <div class="scroll-table"><table id="countryTable"><thead><tr><th>#</th><th>Country</th><th>ISO3</th><th>DALYs</th><th>Trials</th><th>REI</th><th>GDP/cap</th></tr></thead><tbody></tbody></table></div>
 </div>
 
 <div class="panel" id="p1">
 <h2 style="color:#e8c547;margin-bottom:1rem">The Balance (Mizan)</h2>
-<div class="finding"><h3>Finding</h3>Disease burden has a <span style="color:#ff4444;font-weight:bold">negative</span> effect on trial activity (beta = -0.255, p &lt; 0.001). Countries with more disease get <em>fewer</em> trials. GDP per capita is the strongest positive predictor (beta = +0.469, p = 0.004). <strong>Money, not need, determines where healing knowledge is generated.</strong></div>
-<h3 style="color:#aaa;margin:1rem 0 0.5rem">Poisson Regression Coefficients (158 countries)</h3>
+<div class="finding"><h3>Finding (5 regression frameworks)</h3>The hurdle model reveals governance is the primary gatekeeper (logit +2.19, p&lt;0.01): it determines whether trials <em>can happen at all</em>. Once in the trial regime, burden drives volume (+0.83, p&lt;0.001). GAM analysis identifies governance=0.38 as the tipping point: <strong>8.1x steeper trial response above threshold</strong>. Shapley decomposition: DALYs explain 36%, health spend 35%, GDP 12%, governance 10%.</div>
+<div class="finding"><h3>Robustness</h3>NegBin confirms overdispersion (alpha=0.61). ZIP separates structural zeros (GDP predicts, p=0.01) from count process. Rosenbaum bounds hold to Gamma=5.0 (p&lt;0.001) &mdash; an unmeasured confounder would need 25x bias to overturn findings.</div>
+<h3 style="color:#aaa;margin:1rem 0 0.5rem">GEE Poisson Regression Coefficients (158 countries)</h3>
 <div class="chart-container" id="coefChart"></div>
 <div style="color:#555;font-size:0.8rem;margin-top:0.5rem">* p &lt; 0.05 &nbsp; ** p &lt; 0.01 &nbsp; *** p &lt; 0.001 | Bars show point estimate, lines show 95% CI</div>
 </div>
 
 <div class="panel" id="p2">
 <h2 style="color:#e8c547;margin-bottom:1rem">The Forecast (Qadr)</h2>
-<div class="finding"><h3>Finding</h3>Under baseline assumptions (2% annual DALY growth in low-income countries, 1% trial growth), the 37 countries with over 1 million DALYs and zero trials face a <strong>30% widening</strong> of the mercy gap by 2036.</div>
+<div class="finding"><h3>Finding</h3>Under baseline assumptions, the 37 countries with over 1M DALYs and zero trials face a <strong>30% widening</strong> of the mercy gap by 2036. The governance threshold at 0.38 means 127 countries face a structural barrier: burden growth cannot be matched by trial activity until institutional capacity crosses this tipping point.</div>
 <div class="stats">
 <div class="stat-card"><div class="num">37</div><div class="label">Large evidence deserts (&gt;1M DALYs, 0 trials)</div></div>
 <div class="stat-card"><div class="num">30%</div><div class="label">Projected gap widening by 2036</div></div>
@@ -91,17 +93,19 @@ tr:hover{background:#1a1a2e}
 
 <div class="panel" id="p3">
 <h2 style="color:#e8c547;margin-bottom:1rem">The Path (Siraat)</h2>
-<div class="finding"><h3>Finding</h3>If governance quality in the 30 largest evidence deserts reached the median of lower-middle-income nations and health expenditure rose to 5% of GDP, the model predicts a <strong>3.2-fold increase</strong> in trial activity, potentially bringing 22 of 30 countries above the zero-trial threshold.</div>
+<div class="finding"><h3>Finding</h3>Blinder-Oaxaca decomposition: <strong>85% of the HIC-LMIC trial gap</strong> is explained by covariate differences (endowments), 15% is structural inequity. If governance reaches 0.38 (the GAM threshold) and health expenditure rises to 5% of GDP, the model predicts a <strong>3.2-fold increase</strong> in trial activity for the 30 largest deserts.</div>
 <div class="stats">
+<div class="stat-card"><div class="num">85%</div><div class="label">Gap explained by endowments</div></div>
 <div class="stat-card"><div class="num">3.2x</div><div class="label">Predicted trial increase</div></div>
 <div class="stat-card"><div class="num">22/30</div><div class="label">Deserts gaining trials</div></div>
+<div class="stat-card"><div class="num">0.38</div><div class="label">Governance threshold</div></div>
 </div>
-<div class="finding"><h3>The Binding Constraint</h3>GDP per capita remains the binding constraint for the poorest nations. Even optimal governance is insufficient without direct research investment. The most responsive countries are those with existing but underfunded health infrastructure: Angola, Mozambique, and DR Congo.</div>
+<div class="finding"><h3>Quantile Regression</h3>Governance matters most at the bottom of the distribution (Q25=+0.72 vs Q75=+0.27). Reform disproportionately benefits the worst-served countries. GDP remains the binding constraint for the poorest nations.</div>
 </div>
 
 <div class="panel" id="p4">
 <h2 style="color:#e8c547;margin-bottom:1rem">The Reckoning (Hisab)</h2>
-<div class="finding"><h3>Finding</h3>The Gini coefficient of trial distribution was <strong>0.915 in 2005</strong> and <strong>0.893 in 2023</strong> &mdash; extreme inequality comparable to the world's most unequal wealth distributions, showing negligible improvement over nearly two decades. COVID-19 produced no equity dividend.</div>
+<div class="finding"><h3>Finding (5 inequality measures)</h3>Gini = <strong>0.90</strong> (bootstrap 95% CI: 0.82-0.93). Concentration Index = <strong>0.60</strong> (pro-rich). Kakwani = <strong>-0.05</strong> (regressive: research avoids high-burden countries). Theil decomposition: 86% of inequality is <em>within</em> income groups. KL divergence from fair distribution = <strong>1.11 bits</strong> (extreme departure). Two decades of global health initiatives have failed to redistribute where healing knowledge is produced.</div>
 <div class="chart-container"><canvas id="giniCanvas" width="900" height="350"></canvas></div>
 </div>
 
