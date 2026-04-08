@@ -1,0 +1,31 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT00000001",
+          "briefTitle": "Test Diabetes Trial"
+        },
+        "statusModule": {
+          "overallStatus": "COMPLETED",
+          "startDateStruct": {"date": "2020-01-15", "type": "ACTUAL"}
+        },
+        "conditionsModule": {
+          "conditions": ["Diabetes Mellitus, Type 2", "Insulin Resistance"]
+        },
+        "designModule": {
+          "enrollmentInfo": {"count": 500, "type": "ACTUAL"}
+        },
+        "contactsLocationsModule": {
+          "locations": [
+            {"facility": "Hospital A", "city": "London", "country": "United Kingdom"},
+            {"facility": "Hospital B", "city": "London", "country": "United Kingdom"},
+            {"facility": "Clinic C", "city": "Lahore", "country": "Pakistan"},
+            {"facility": "Center D", "city": "New York", "country": "United States"}
+          ]
+        }
+      }
+    }
+  ],
+  "nextPageToken": null
+}
