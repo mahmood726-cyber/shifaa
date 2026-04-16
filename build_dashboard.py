@@ -76,7 +76,7 @@ tr:hover{background:#1a1a2e}
 <div class="stat-card"><div class="num">74,881</div><div class="label">Trials linked</div></div>
 <div class="stat-card"><div class="num">18</div><div class="label">Statistical methods</div></div>
 </div>
-<div class="finding"><h3>Finding</h3>72 of 180 countries have zero registered clinical trials despite collectively bearing 28% of global DALYs. The USA alone concentrates 1,281 weighted trial-equivalents &mdash; more than the bottom 120 countries combined. Moran's I confirms spatial clustering (I=0.25, p&lt;0.0001). The Esteban-Ray polarization index reveals two distinct regimes: 67% of countries averaging 0.5 trials versus 33% averaging 65.</div>
+<div class="finding"><h3>Finding</h3>72 of 180 countries have zero registered clinical trials despite collectively bearing 11.2% of global DALYs. The USA alone concentrates 1,281 weighted trial-equivalents &mdash; more than the bottom 120 countries combined. Moran's I confirms spatial clustering (I=0.25, p&lt;0.0001). The Esteban-Ray polarization index reveals two distinct regimes: 67% of countries averaging 0.5 trials versus 33% averaging 65.</div>
 <div class="scroll-table"><table id="countryTable"><thead><tr><th>#</th><th>Country</th><th>ISO3</th><th>DALYs</th><th>Trials</th><th>REI</th><th>GDP/cap</th></tr></thead><tbody></tbody></table></div>
 </div>
 
@@ -102,7 +102,7 @@ tr:hover{background:#1a1a2e}
 
 <div class="panel" id="p3">
 <h2 style="color:#e8c547;margin-bottom:1rem">The Path (Siraat)</h2>
-<div class="finding"><h3>Finding</h3>Blinder-Oaxaca decomposition: <strong>85% of the HIC-LMIC trial gap</strong> is explained by covariate differences (endowments), 15% is structural inequity. If governance reaches 0.38 (the GAM threshold) and health expenditure rises to 5% of GDP, the model predicts a <strong>3.2-fold increase</strong> in trial activity for the 30 largest deserts.</div>
+<div class="finding"><h3>Finding</h3>Blinder-Oaxaca decomposition: <strong>61.7% of the HIC-LMIC trial gap</strong> is explained by covariate differences (endowments), 15% is structural inequity. If governance reaches 0.38 (the GAM threshold) and health expenditure rises to 5% of GDP, the model predicts a <strong>3.2-fold increase</strong> in trial activity for the 30 largest deserts.</div>
 <div class="stats">
 <div class="stat-card"><div class="num">85%</div><div class="label">Gap explained by endowments</div></div>
 <div class="stat-card"><div class="num">3.2x</div><div class="label">Predicted trial increase</div></div>

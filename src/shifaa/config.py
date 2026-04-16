@@ -1,12 +1,29 @@
 """Paths to lakehouses, CT.gov API config, and constants."""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-IHME_SILVER = Path("C:/Projects/ihme-data-lakehouse/data/silver")
-WB_SILVER = Path("C:/Projects/wb-data-lakehouse/data/silver")
-WHO_SILVER = Path("C:/Projects/who-data-lakehouse/data/silver")
-IHME_REFERENCE = Path("C:/Projects/ihme-data-lakehouse/data/reference")
+
+def _lake_root(env_var: str, default_drive: str, repo: str) -> Path:
+    override = os.environ.get(env_var)
+    if override:
+        return Path(override)
+    for drive in (default_drive, "D", "C"):
+        candidate = Path(f"{drive}:/Projects/{repo}")
+        if candidate.exists():
+            return candidate
+    return Path(f"{default_drive}:/Projects/{repo}")
+
+
+_IHME_ROOT = _lake_root("SHIFAA_IHME_ROOT", "D", "ihme-data-lakehouse")
+_WB_ROOT = _lake_root("SHIFAA_WB_ROOT", "D", "wb-data-lakehouse")
+_WHO_ROOT = _lake_root("SHIFAA_WHO_ROOT", "D", "who-data-lakehouse")
+
+IHME_SILVER = _IHME_ROOT / "data" / "silver"
+WB_SILVER = _WB_ROOT / "data" / "silver"
+WHO_SILVER = _WHO_ROOT / "data" / "silver"
+IHME_REFERENCE = _IHME_ROOT / "data" / "reference"
 
 CTGOV_BASE_URL = "https://clinicaltrials.gov/api/v2/studies"
 CTGOV_CACHE_DIR = ROOT / "data" / "cache" / "ctgov"
