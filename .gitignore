@@ -7,3 +7,12 @@ __pycache__/
 dist/
 build/
 .claude/
+
+# Sentinel / Overmind auto-generated logs
+review-findings.md
+review-findings.jsonl
+sentinel-findings.md
+sentinel-findings.jsonl
+STUCK_FAILURES.md
+STUCK_FAILURES.jsonl
+DECISIONS.md
