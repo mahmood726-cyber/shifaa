@@ -121,6 +121,7 @@ def fit_negbin_model(matrix: pd.DataFrame) -> dict | None:
             "model": result,
             "converged": result.mle_retvals["converged"],
             "n_obs": len(df),
+            # sentinel:skip-line P1-empty-dataframe-access  (guarded by the "alpha" in ... string check)
             "alpha": float(result.params.iloc[-1]) if "alpha" in str(result.params.index[-1]).lower() else None,
             "aic": result.aic,
             "bic": result.bic,
